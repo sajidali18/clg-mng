@@ -5,6 +5,7 @@ import UploadLogo from './Components/Uploadlogo';
 import UploadImage from './Components/Uplpadimage';
 import UniversityProfile from './Components/Clginfo';
 import ClgList from './Components/ClgList';
+import './App.css'
 
 function App() {
   return (
