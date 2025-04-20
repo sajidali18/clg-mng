@@ -2,159 +2,94 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>College Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>College List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .college-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .college-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .college-img {
+            height: 180px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container py-5">
-        <h2 class="mb-4 text-center">🎓 College Management Dashboard</h2>
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-primary">Explore Top Colleges</h1>
+            <p class="text-muted">Discover institutions, programs, and opportunities to shape your future.</p>
+        </div>
 
-        <!-- Tabs -->
-        <ul class="nav nav-tabs mb-4" id="dashboardTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create"
-                    type="button" role="tab">➕ Create College</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="logo-tab" data-bs-toggle="tab" data-bs-target="#logo" type="button"
-                    role="tab">📤 Upload Logo</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                    role="tab">🖼️ Upload Profile Image</button>
-            </li>
-        </ul>
+        <!-- Search Bar -->
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Search colleges by name, city, or program...">
+            </div>
+        </div>
 
-        <!-- Tab Content -->
-        <div class="tab-content" id="dashboardTabsContent">
-
-            <!-- Create College -->
-            <div class="tab-pane fade show active" id="create" role="tabpanel">
-                <form id="createCollegeForm" class="row g-3 border p-4 rounded shadow-sm">
-                    <h5>College Info</h5>
-                    <div class="col-md-6">
-                        <input class="form-control" name="name" placeholder="College Name *" required />
+        <!-- College Cards Grid -->
+        <div class="row g-4">
+            <!-- Example College Card -->
+            <div class="col-md-4">
+                <div class="card college-card h-100">
+                    <img src="https://source.unsplash.com/400x300/?college,building" class="card-img-top college-img"
+                        alt="College">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Poornima University</h5>
+                        <p class="card-text text-muted mb-1"><i class="bi bi-geo-alt-fill text-danger"></i> Jaipur,
+                            Rajasthan</p>
+                        <p class="small text-secondary">Private university offering UG, PG, and doctoral programs in
+                            Engineering, Management, and more.</p>
                     </div>
-                    <div class="col-md-6">
-                        <input class="form-control" name="short_code" placeholder="Short Code *" required />
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="#" class="btn btn-outline-primary w-100">View Details</a>
                     </div>
-                    <div class="col-md-12">
-                        <input class="form-control" name="website_url" placeholder="Website URL" />
-                    </div>
-                    <div class="col-md-3">
-                        <select name="is_active" class="form-select">
-                            <option value="true" selected>Active</option>
-                            <option value="false">Inactive</option>
-                        </select>
-                    </div>
-
-                    <h5 class="mt-4">Address</h5>
-                    <div class="col-md-4"><input class="form-control" name="street" placeholder="Street" /></div>
-                    <div class="col-md-4"><input class="form-control" name="area" placeholder="Area" /></div>
-                    <div class="col-md-4"><input class="form-control" name="city" placeholder="City" /></div>
-                    <div class="col-md-4"><input class="form-control" name="state" placeholder="State" /></div>
-                    <div class="col-md-4"><input class="form-control" name="country" value="India"
-                            placeholder="Country" /></div>
-                    <div class="col-md-4"><input class="form-control" name="pincode" placeholder="Pincode" /></div>
-
-                    <h5 class="mt-4">Contact Person</h5>
-                    <div class="col-md-4"><input class="form-control" name="contact_name" placeholder="Contact Name" />
-                    </div>
-                    <div class="col-md-4"><input class="form-control" name="contact_email"
-                            placeholder="Contact Email" /></div>
-                    <div class="col-md-4"><input class="form-control" name="contact_phone" placeholder="Phone" /></div>
-                    <div class="col-md-4"><input class="form-control" name="contact_designation"
-                            placeholder="Designation" /></div>
-
-                    <div class="col-12 text-end mt-3">
-                        <button type="submit" class="btn btn-primary">Create College</button>
-                    </div>
-                </form>
+                </div>
             </div>
 
-            <!-- Upload Logo -->
-            <div class="tab-pane fade" id="logo" role="tabpanel">
-                <form id="uploadLogoForm" class="border p-4 rounded shadow-sm" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="logoCollegeId" class="form-label">College ID</label>
-                        <input type="text" class="form-control" name="college_id" id="logoCollegeId" required />
+            <!-- Repeat for more colleges -->
+            <div class="col-md-4">
+                <div class="card college-card h-100">
+                    <img src="https://source.unsplash.com/400x300/?university,education"
+                        class="card-img-top college-img" alt="College">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">BITS Pilani</h5>
+                        <p class="card-text text-muted mb-1"><i class="bi bi-geo-alt-fill text-danger"></i> Pilani,
+                            Rajasthan</p>
+                        <p class="small text-secondary">Renowned for its technical education and vibrant campus life
+                            with top-tier research opportunities.</p>
                     </div>
-                    <div class="mb-3">
-                        <label for="logoFile" class="form-label">Select Logo</label>
-                        <input type="file" class="form-control" name="myfile" id="logoFile" accept="image/*" required />
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="#" class="btn btn-outline-primary w-100">View Details</a>
                     </div>
-                    <button type="submit" class="btn btn-success">Upload Logo</button>
-                </form>
+                </div>
             </div>
 
-            <!-- Upload Profile Image -->
-            <div class="tab-pane fade" id="profile" role="tabpanel">
-                <form id="uploadProfileForm" class="border p-4 rounded shadow-sm" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="profileCollegeId" class="form-label">College ID</label>
-                        <input type="text" class="form-control" name="college_id" id="profileCollegeId" required />
-                    </div>
-                    <div class="mb-3">
-                        <label for="profileFile" class="form-label">Select Profile Image</label>
-                        <input type="file" class="form-control" name="myfile" id="profileFile" accept="image/*"
-                            required />
-                    </div>
-                    <button type="submit" class="btn btn-info">Upload Profile Image</button>
-                </form>
-            </div>
-
+            <!-- Add more cards as needed -->
         </div>
     </div>
 
-    <script>
-        // CREATE COLLEGE
-        document.getElementById("createCollegeForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = key === "is_active" ? value === "true" : value;
-            });
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-            const res = await fetch("https://signup-api.zoskills.com:2083/admin/colleges", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
-            const result = await res.json();
-            alert(result.message);
-        });
-
-        // UPLOAD LOGO
-        document.getElementById("uploadLogoForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const res = await fetch("https://signup-api.zoskills.com:2083/admin/colleges/upload-logo", {
-                method: "POST",
-                body: formData,
-            });
-            const result = await res.json();
-            alert(result.message);
-        });
-
-        // UPLOAD PROFILE IMAGE
-        document.getElementById("uploadProfileForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const res = await fetch("https://signup-api.zoskills.com:2083/admin/colleges/upload-profile", {
-                method: "POST",
-                body: formData,
-            });
-            const result = await res.json();
-            alert(result.message);
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

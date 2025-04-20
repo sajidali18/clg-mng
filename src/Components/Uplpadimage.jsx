@@ -3,17 +3,17 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 export default function UploadImage() {
-    const params = useParams(); // Get college ID from URL
+    const params = useParams();
     const [logoForm, setLogoForm] = useState({
         college_id: params.collegeId,
         file: null,
     });
-    // console.log(logoForm.college_id);
+
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file && file.size > 2 * 1024 * 1024) {
             alert("File size must be less than 2MB");
-            e.target.value = ""; // Reset the file input
+            e.target.value = ""; 
             return;
         }
         setLogoForm((prev) => ({ ...prev, file: e.target.files[0] }));

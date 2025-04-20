@@ -111,8 +111,7 @@ export default function CollegeDashboard() {
                             <option value="false">Inactive</option>
                         </select>
                     </div>
-
-                    <h5 className="mt-4">Address</h5>
+                   <h5 className="mt-4">Address</h5>
                     {["street", "area", "city", "state", "country", "pincode"].map((field, i) => (
                         <div className="col-md-4" key={i}>
                             <input className="form-control" name={field} placeholder={field.charAt(0).toUpperCase() + field.slice(1)} value={formData[field]} onChange={handleInputChange} />
@@ -131,7 +130,6 @@ export default function CollegeDashboard() {
                     </div>
                 </form>
             )}
-
             {activeTab === "list" && (
                 <div className="table-responsive border p-3 rounded shadow-sm">
                     <h5 className="mb-3">All Colleges</h5>
