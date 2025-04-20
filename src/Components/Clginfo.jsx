@@ -174,7 +174,7 @@ export default function UniversityProfile() {
                                     ].map((item, idx) => (
                                         <li className="d-flex mb-3" key={idx}>
                                             <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                            <span className="small text-secondary">{item}</span>
+                                            <span className="small " style={{ fontSize: "16px", fontWeight: "500" }}>{item}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -197,7 +197,7 @@ export default function UniversityProfile() {
                                     ].map((item, idx) => (
                                         <li className="d-flex mb-3" key={idx}>
                                             <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-                                            <span className="small text-secondary">{item}</span>
+                                            <span className="" style={{ fontSize: "16px", fontWeight: "500" }}>{item}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -266,7 +266,7 @@ export default function UniversityProfile() {
                                             text: (
                                                 <>
                                                     Thousands of international students use Global Admissions with{" "}
-                                                    <a href="#" className="text-primary text-decoration-none">
+                                                    <a href="#" className="">
                                                         4.9 star reviews
                                                     </a>
                                                 </>
@@ -277,11 +277,11 @@ export default function UniversityProfile() {
                                             text: (
                                                 <>
                                                     Free Service to{" "}
-                                                    <a href="#" className="text-primary text-decoration-none">
+                                                    <a href="" className="">
                                                         Partner Universities
                                                     </a>{" "}
                                                     or upgrade to our{" "}
-                                                    <a href="#" className="text-primary text-decoration-none">
+                                                    <a href="#" className="">
                                                         Guaranteed Service
                                                     </a>
                                                 </>
@@ -289,9 +289,9 @@ export default function UniversityProfile() {
                                         },
                                     ].map((item, i) => (
                                         <li className="d-flex mb-3" key={i}>
-                                            <i className={`bi ${item.icon} text-warning me-2 mt-1`}></i>
-                                            <div className="small text-secondary">
-                                                <p className="mb-0">{item.text}</p>
+                                            <i className={`bi ${item.icon}  me-2 mt-1`}></i>
+                                            <div className="">
+                                                <p className="mb-0" style={{ fontSize: "14px", fontWeight: "500" }}>{item.text}</p>
                                             </div>
                                         </li>
                                     ))}
@@ -302,7 +302,8 @@ export default function UniversityProfile() {
                 </div>
             </main>
 
-            {/* Footer */}
+            
+
             <footer style={{
                 backgroundColor: "#EA6A2B"
             }} className=" py-3 text-white mt-4">
