@@ -32,7 +32,7 @@ function ClgList() {
 
         fetchColleges();
     }, []);
-    
+
     if (loading) {
         return (
             <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
@@ -70,16 +70,7 @@ function ClgList() {
                                 </div>
                             </div>
 
-                            <div className="col-6 text-end">
-                                <img
-                                    src="https://s3-alpha-sig.figma.com/img/bba5/d0ea/d201388d788330405754f52131b9961f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=BhdbIFfpoIfdS4Lc9Dy4CI6bsIxb4p8FS50FzjOMHEUic8-iQ81OwYlDw5nubXNjfqxPIxB4pK0RI-XoaIxwYyatiA7ijmkUkzG0eKzPmscGcOcdVmQZJk32rQomw2YUDYpUc3ap3ad6Dyheb4ftXPiSHFYKlkDP5FrkCB6F~-9rCUPYwcbnod9t~5g~zZuvW4Pa71agEsMRp1z8s2D7xF3n7mAx-VBzkZlUZmve2weXJQBKp-z4Ehz6Cr-LW2zx3qVy~WzuxFsJ8a9FAV9MwOlCCsW3PHRwzwz9~KJM3xQHcXC4g0dPGhbQtDmgw~BaSsq4dFt0lcDy22KtKEk2Bg__"
-                                    alt="Poornima University Logo"
-                                    width={120}
-                                    height={40}
-                                    className="img-fluid"
-                                    style={{ height: "40px", objectFit: "contain" }}
-                                />
-                            </div>
+                            
                         </div>
                     </div>
                 </header>

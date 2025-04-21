@@ -1,95 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>College List</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap 5 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .college-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
-        }
-
-        .college-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .college-img {
-            height: 180px;
-            object-fit: cover;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PushGrade</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <!-- <link href="style.css" rel="stylesheet"> -->
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
+<style>
+    /* Custom CSS */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+    color: #212529;
+}
 
+/* Brand styling */
+.brand-text {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.text-orange {
+    color: #ff7a00;
+}
+
+.border-orange {
+    border-color: #ff7a00 !important;
+}
+
+/* Navigation */
+.navbar .nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+/* Hero section */
+.hero-section {
+    padding: 4rem 0;
+}
+
+/* Gradient section */
+.gradient-section {
+    background: linear-gradient(90deg, #fff0e5 0%, #e5f0ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stats cards */
+.stat-card {
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Mock test cards */
+.mock-test-section .card {
+    transition: transform 0.3s ease;
+}
+
+.mock-test-section .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-section .d-flex {
+        justify-content: center;
+    }
+
+    /* .trusted-section .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trusted-section img {
+        margin: 1rem 0;
+    } */
+}
+  .trusted-by-section {
+      background-color: #fff;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .trusted-text {
+      border-right: 1px solid #ccc;
+      padding-right: 20px;
+      font-weight: 500;
+  }
+
+  .brand-logo {
+      max-height: 40px;
+      margin: 0 80px;
+      object-fit: contain;
+  }
+
+  /* cartoon section */
+  .pushgrade-banner {
+      position: relative;
+      background: linear-gradient(to right, #fde0dc, #e0f7fa);
+      padding: 100px 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .pushgrade-banner h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #111;
+      z-index: 2;
+      position: relative;
+    }
+
+    .underline-highlight {
+      position: relative;
+      display: inline-block;
+    }
+
+    .underline-highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 6px;
+      background-color: #a084dc;
+      border-radius: 10px;
+      z-index: -1;
+    }
+
+    .cartoon-img {
+      position: absolute;
+      width: 80px;
+    }
+
+    /* Accurate image placements */
+    .img-yellow-left {
+      top: 40px;
+      left: 90px;
+    }
+
+    .img-pink-bottom-left {
+      bottom: 30px;
+      left: 100px;
+    }
+
+    .img-orange-center-right {
+      bottom: 115px;
+      left: 170px;
+    }
+
+    .img-green-bottom-right {
+      bottom: 110px;
+      right: 135px;
+    }
+
+    .img-red-box {
+      top: 15px;
+      right: 200px;
+    }
+    .img-yellow-box {
+      bottom: 45px;
+      right: 230px;
+    }
+
+    @media (max-width: 768px) {
+      .cartoon-img {
+        display: none;
+      }
+
+      .pushgrade-banner h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+</style>
 <body>
-
-    <div class="container py-5">
-        <!-- Header -->
-        <div class="text-center mb-5">
-            <h1 class="fw-bold text-primary">Explore Top Colleges</h1>
-            <p class="text-muted">Discover institutions, programs, and opportunities to shape your future.</p>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="row mb-4 justify-content-center">
-            <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Search colleges by name, city, or program...">
-            </div>
-        </div>
-
-        <!-- College Cards Grid -->
-        <div class="row g-4">
-            <!-- Example College Card -->
-            <div class="col-md-4">
-                <div class="card college-card h-100">
-                    <img src="https://source.unsplash.com/400x300/?college,building" class="card-img-top college-img"
-                        alt="College">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">Poornima University</h5>
-                        <p class="card-text text-muted mb-1"><i class="bi bi-geo-alt-fill text-danger"></i> Jaipur,
-                            Rajasthan</p>
-                        <p class="small text-secondary">Private university offering UG, PG, and doctoral programs in
-                            Engineering, Management, and more.</p>
-                    </div>
-                    <div class="card-footer bg-white border-top-0">
-                        <a href="#" class="btn btn-outline-primary w-100">View Details</a>
-                    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="brand-text">Push<span class="text-orange">Grade</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Product
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Teams
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Individuals
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Download
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="me-3 nav-link">Campus Connect</a>
+                    <a href="#" class="me-3 nav-link">Log in</a>
+                    <a href="#" class="btn btn-dark rounded-3 px-4">Sign Up</a>
                 </div>
             </div>
+        </div>
+    </nav>
 
-            <!-- Repeat for more colleges -->
-            <div class="col-md-4">
-                <div class="card college-card h-100">
-                    <img src="https://source.unsplash.com/400x300/?university,education"
-                        class="card-img-top college-img" alt="College">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">BITS Pilani</h5>
-                        <p class="card-text text-muted mb-1"><i class="bi bi-geo-alt-fill text-danger"></i> Pilani,
-                            Rajasthan</p>
-                        <p class="small text-secondary">Renowned for its technical education and vibrant campus life
-                            with top-tier research opportunities.</p>
-                    </div>
-                    <div class="card-footer bg-white border-top-0">
-                        <a href="#" class="btn btn-outline-primary w-100">View Details</a>
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold mb-4">Push your Boundaries!</h1>
+                    <p class="lead mb-4">
+                        Maximize your potential with specialized internships. 
+                        We take you beyond the fundamentals, immersing you 
+                        in hands-on learning and real-life situations.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-dark rounded-pill px-4 py-2">
+                            Talk to our team <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-dark rounded-pill px-4 py-2">
+                            Start building
+                        </a>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zsk-lCcerbXfkXS8mMaSNvgQbRsKTc1cuV.png" alt="Illustration" class="img-fluid">
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Add more cards as needed -->
+    <!-- Trusted By Section -->
+<div class="container-fluid trusted-by-section">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center text-md-start">
+            <div class="col-md-2 mb-3 mb-md-0 trusted-text">
+                <p class="mb-0">Trusted<br>by</p>
+            </div>
+        <div class="col-md-10 d-flex flex-wrap justify-content-center justify-content-md-start gap-4 align-items-center">
+                <img src="https://s3-alpha-sig.figma.com/img/1ba4/d9c3/6a7671a8e19afb433ddfd3712abd3938?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NAQCON-07M5yEbDLKwhC6v-FyFF1yFsgRcTvalfxnwxfrXsd9L2ExE3uvHxCvlCMFdIPktkHa6pKX2r37I4yXuz4H8JRsYPrp0RYgsjenxlT~3QI8tDlRZOFMZTtChGb46LoeFFdnK9jC72BnFUGRw4lKuA6mF2PXinFwI5VExfGIX~o0P6pFdoTa~DCDJ08FP-8PYcDYmw0Fn39P06-VG-3gW6GvS6tq6GOe5H5niBS8xcc8P94xC1~Zo~X21URr2k2VkPtedCKfzYGSy5qVTveKkj4PiZ~J2YqoLBEr7FMUoIZtrXRqDFc6ouOm-WTt5jrhGavjtfxVQHWakapCQ__" alt="Western Union" class="brand-logo">
+                <img src="https://s3-alpha-sig.figma.com/img/a709/1dab/5ec4bb6fce4b1ab41050c7c13672f3fa?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=LUlF3RcZlgqGvdB2QXWNDF~dPWgjxZXRI~56tXm9KToh2ACmjSut-xaDrD3GMa5UfINfxpMw5KuGat09jhC52kVXuKH~yPB4H5d-iXe5MWaCcuh1MHxmezzTUkOARKX5Svs96X~ewQFRrEo-x0IfmVNC~Ptw~b0lpSEkTilX1r~GI8Z1hZOM-6Nk8HXDyfa8iyqvWQPXv-wPbil~hDsQjX2Z6hqRIkisBjNST~Vmii6r~VwLGocMnI7N1AoqUVIt2rZxLt4TO0kEfu5gUyzCj59DmPjqHwKd4Zbb8VMqrpYJ3GsxmL31bLTaLm65xlozOS4TuSdGodI3wj4MN6nAqQ__" alt="Moneybox" class="brand-logo">
+                <img src="https://s3-alpha-sig.figma.com/img/2d4e/6426/51e5479e5f863dd9ee2aa47ff27056e9?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=XpVMXW8-hsjf9hJbDXubt21jUSdlm~n1XUF26aNHQfDduUL4kwJAVVJ-aN94qMJ0xr7EslBuZZhsPZUJU1cEI0avbjBjZKTDlemSXGJHud5HspKJTcbmLUGAF25Nou5dWaxRp0zdhZ2SIaVKGrBeedr2hT8HkjpZAI6at0lbwdxp7z8y3yh5DAMLaoAeQ2cvM-y1dUErkjrVZo8HjdTv8pJEaC8gd~w74CQ2I9h6~3OtD7HNFPm8qDgMKo5DLTRBNlwu5JM7gSrZP4vFGW8ONGz~Un0p7NDDo7wAE47~7RJS-8QLx6sZJMlbB5gwMDnAxLp1mtc5fDMci~gH3nxdmw__" alt="Pokerstars" class="brand-logo">
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap Icons CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Minutes Not Days Section -->
+    <div class="container-fluid pushgrade-banner">
+        <!-- Cartoon Images (use your actual image paths here) -->
+        <img src="https://s3-alpha-sig.figma.com/img/f149/40e6/09da59803e82ce2a1875509d645be502?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OjalZ6mpz4qmwUHRF1mvmsV1IUyEBEboIOWn~vysW~1qzIW~y~1MpTVEjxsOpVkscFPaDJ2sIA6NnM4d5foH2C0RLbFNLfzUAkcAirmZms7sWr15U-Qs26kF4QKpY23qkmWiB8UE1MPayWpOo9oTYJUgDglxEgn86Mf6fSh18xBkBHRzHVd64H8gp8tb~s3XwULeg3RZW6Rhzuf~5~OPp-DNna4IK8AlAFvSL-lec~JZ0ZsFfx6Uw0urtsuC0c1Efp-vOZtmGH43aixY5CE~WhAqWcZ2e9-2w496FE7-8h0E7kwosZz~B8jtlogG3Wp5kcyBgCeivXhw51v7x5ruiQ__"
+            alt="Yellow Left" class="cartoon-img img-yellow-left">
+    
+        <img src="https://s3-alpha-sig.figma.com/img/aa9e/5c15/8100125539e811f8d0411b0b68db8775?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HIgVvn5g9Smbmft-rNpa6TnBYijdB13M6K1XGs1EzY1pk0T9f1LdV17vtK09KSp2vMJZZQEDA2fB2D3QU1bYfRoE0R~9XWc95oxncCoUgbqiV-gBu4j2sms7YVi0ORsEMx0mHzYLxCZL6ahW7B6~qOHVeK9uoB2HUNrPrLHZEYfPq5BIWQRsHeLoAjoC-ZGrDK~aLu2R8xG9Ttp9kyYr~-vw-LgD7Ka41yT6FE8kSF4N5suqyS2h7XEaNW-6Urn2ik8xncTTxP1pMs~MHztPo805WbDqPzVcgNAZikgrCPVkoFspxf-AIwdhWQMp7KTXDYCWT75O5udzfp51MbzfHA__"
+            alt="Pink Bottom Left" class="cartoon-img img-pink-bottom-left">
+    
+        <img src="https://s3-alpha-sig.figma.com/img/c9aa/04e5/d3d0ff7f2153b45b117376f5da6c5f92?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UWf7i5BAlwZnw8JQ9Z6HzrnMnLSmIOIbj7TcVT5DFsGM5IoTE~7a-y9FAlRUwRSuJx1ZP~4Kg2-P7-6MIeBPjncQcQpalXMkfXKkL9b2IrQHZqVP2UXbv2woCw3SeedUPqLB-DuPld7hSEI6FZNL95kmkRhR6kk4n3jmvXAg0ibx5W1U5MEQufG9jaSOVKaWPFI5y~yM5gpLaveWuVhkF02c~90nNX0SBSq1D35qy~qSJ8BOdHIzp~xDS6rTwDSUAO2sl-zevX5Mfuat9NZNkq09KkHxCFWO53q6aTAOwc2S2d9g5hLpwAiSm7bhUdC8jLBF~IUVhEogcy8H5Tb5~Q__"
+            alt="Orange Top Right" class="cartoon-img img-orange-center-right">
+    
+        <img src="https://s3-alpha-sig.figma.com/img/00ef/00a8/5256a16eb2771bc9f453dbfbe1b4db2e?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=siYEvX7OEqA3cxdTQ1Gdaf7~SxGXL2xd0bKmJ8SoARTSSd2xrL0vbmMfJaB7wpD5sjjuuDT0HCsb7oS-waal2ioY1ymmEr6S1PvX2LC6i7P6VIJ3sPaEvaMLjCQ0nSysqmmmpASF-el3mO7xkzyppFMbW7wKKSDPLm7GWKLFNZG36w9K-IIwECem0aPF7vZbCI4Hgpq8aQhv8NV8F4xgBstsUEcr8smGzIFbvYk1IopN9n9jcVZe-p1-K2Jv1Fe0CEgvE9Z8riVpiaa13ZEPvIsTpmw85Z4VPFAI9KZZ4GR8fkcgWiD7zMhzQjw8KZlExIeihZbHILhYhdsNQwc0Tw__"
+            alt="Green Bottom Right" class="cartoon-img img-green-bottom-right">
+    
+        <img src="https://s3-alpha-sig.figma.com/img/9988/8759/6cca14393ab370ef863c3258787cc2a2?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=gVR5DJSwxOaSnQ8EUHDQIzgWuRGHl1nVQM-ZxvuaAiAUImR~5oFRjv-IPCwI-2V60ydoMysREJ2oM67cvS9yWlQVJYH1h7GKI-3vd~mk45ujS72BacCZx0r98skasEm9QGj~XtMReIc0akQtztCo98THVGbw3-m3Voj1o2PG3TLc08UL-sdyj9WpM3XPtHD18xFOKu16i1iCi1FneTTjcJGyy0z7HeYm0gN8QtBgyfFJ8qEJx1Se2yUiaeM54kJ6G2pHIg2Q8~Hi1YdODM7BOD-LwMZhgVhFVT3Q1RuA2IZqJZ4Vxhk98z7c-BxNN48NJqhFZxB2XcsyHEeOuIgkpQ__"
+            alt="red Box" class="cartoon-img img-red-box">
+    
+        <img src="https://s3-alpha-sig.figma.com/img/ff1b/6569/d57b4c9be0bca5581e44e4220d6bef95?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JhBw1CyFSDOkAtfZ6FqJduIaXFNnH8nramw3YBNNmj8heATp6ztfQm1g3zNA8v7m3BfgZGzccQn55ue9SMogiSfALSWuhoz2Z7PDd4HFjmkO1EjUALtzkDy4xscZ5lx~WjoQUJMhhHSJtmJpKc1fNle~0KdexGhkpFHAPUFDT00fiMnxA9KpU1Kdwb~jq9QX--ELK~wUz7jNCo3uNISQBDoSeuORdRoOXAMfiIDCkVPwj2w08b8ApHlzqDSAyZsjydg0kLvmMRf7ouuW5zoA-u2omNbM5v5oh1HzY7vjV40I6ifOAyYP4vcs9GFBMhSIEwI0Ke2hFGzkHIzx2p9PNA__"
+            alt="Yellow Box" class="cartoon-img img-yellow-box">
+    
+        <!-- Main Text -->
+        <h1>
+            <span class="underline-highlight">Minutes</span> not days,<br>
+            that’s all it takes with <strong>PushGrade</strong>
+        </h1>
+    </div>
 
+    <!-- Stats Section -->
+    <section class="stats-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card p-4 rounded-4 bg-light">
+                        <h3 class="fw-bold">100M+ global users</h3>
+                        <p class="mb-0">Scale faster on a trusted platform</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card p-4 rounded-4 bg-light">
+                        <h3 class="fw-bold">12K+ financial institutions</h3>
+                        <p class="mb-0">Reach people anywhere they bank</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card p-4 rounded-4 bg-light">
+                        <h3 class="fw-bold">550K+ new daily connections</h3>
+                        <p class="mb-0">Access real-time financial data</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card p-4 rounded-4 bg-light">
+                        <h3 class="fw-bold">20 countries and growing</h3>
+                        <p class="mb-0">Take your business to more places</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Section-1-Br8kKcKE0KY5tcuob1lwEPpSszx46K.png" alt="Network Diagram" class="img-fluid" style="max-width: 600px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mock Test Section -->
+    <section class="mock-test-section py-5">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-4">
+                <div class="col-md-8">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SVG-TqQ7p3uoSORN4PeIQ5ObsjWnkNnrgI.png" alt="Decoration" class="me-3" style="width: 100px;">
+                        <h2 class="display-5 fw-bold mb-0">
+                            Enroll for the <span class="text-orange border-bottom border-orange pb-1">Mock Test</span><br>
+                            to Rate Your Skills
+                        </h2>
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SVG-TqQ7p3uoSORN4PeIQ5ObsjWnkNnrgI.png" alt="Decoration" class="ms-3" style="width: 100px; transform: rotate(180deg);">
+                    </div>
+                    <p class="text-secondary mt-3">We're so glad you asked.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 border-0 rounded-4 bg-light">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2" style="width: 30px; height: 30px;">
+                                    <i class="bi bi-globe"></i>
+                                </div>
+                                <h5 class="mb-0">Skill Assessment</h5>
+                            </div>
+                            <div class="text-center py-3">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Background-1-csjdSbgsU6nBDzNhIcLNiBSiVvaEWH.png" alt="Skill Assessment" class="img-fluid" style="height: 150px;">
+                            </div>
+                            <p class="text-danger mb-0">Evaluate Your Skills</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 border-0 rounded-4 bg-light">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-light text-primary d-flex align-items-center justify-content-center me-2" style="width: 30px; height: 30px;">
+                                    <i class="bi bi-dot"></i>
+                                </div>
+                                <h5 class="mb-0">Interview</h5>
+                            </div>
+                            <div class="text-center py-3">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Background-1-csjdSbgsU6nBDzNhIcLNiBSiVvaEWH.png" alt="Interview" class="img-fluid" style="height: 150px;">
+                            </div>
+                            <p class="text-danger mb-0">1:1 with Industry Expert</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 border-0 rounded-4 bg-light">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-light text-primary d-flex align-items-center justify-content-center me-2" style="width: 30px; height: 30px;">
+                                    <i class="bi bi-dot"></i>
+                                </div>
+                                <h5 class="mb-0">Expert Rating</h5>
+                            </div>
+                            <div class="text-center py-3">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Background-1-csjdSbgsU6nBDzNhIcLNiBSiVvaEWH.png" alt="Expert Rating" class="img-fluid" style="height: 150px;">
+                            </div>
+                            <p class="text-danger mb-0">Get the Expert's Feedback</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 border-0 rounded-4 bg-light">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle bg-light text-primary d-flex align-items-center justify-content-center me-2" style="width: 30px; height: 30px;">
+                                    <i class="bi bi-dot"></i>
+                                </div>
+                                <h5 class="mb-0">Random Text</h5>
+                            </div>
+                            <div class="text-center py-3">
+                                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Background-1-csjdSbgsU6nBDzNhIcLNiBSiVvaEWH.png" alt="Random Text" class="img-fluid" style="height: 150px;">
+                            </div>
+                            <p class="text-danger mb-0">Get Started</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-dark rounded-pill px-4 py-2">Get started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Container-E7XwDuSKftxp2bREIpe1HuOCCEVdGd.png" alt="Testimonial Illustration" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <div class="card-body">
+                            <p class="lead">
+                                Are You Confused About Command in Required Skill Set? You don't have to chase 
+                                get in and out in minutes. Unlike other platforms, You don't have to chase 
+                                people down or deal with the frustration of mismatched payment preferences.
+                            </p>
+                            <p class="text-end mb-0 fw-bold">Coonzworld <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Container-E7XwDuSKftxp2bREIpe1HuOCCEVdGd.png" alt="Logo" style="width: 30px;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

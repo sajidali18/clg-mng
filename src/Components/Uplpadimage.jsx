@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 export default function UploadImage() {
+    const navigate = useNavigate();
     const params = useParams();
     const [logoForm, setLogoForm] = useState({
         college_id: params.collegeId,
@@ -34,7 +36,7 @@ export default function UploadImage() {
                 formData
             );
             alert(res.data.message);
-            console.log(res)
+            navigate('/');  
         } catch (error) {
             alert(error.response?.data?.message || "Error occurred");
         }
