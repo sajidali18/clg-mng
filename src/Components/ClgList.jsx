@@ -12,9 +12,9 @@ function ClgList() {
         console.log("college id ", id);
     };
 
-    const handleAddCollege = () => {
-        navigation('/addcollege'); // ✅ Navigate to add-college page
-    };
+    // const handleAddCollege = () => {
+    //     navigation('/addcollege'); // ✅ Navigate to add-college page
+    // };
 
     useEffect(() => {
         const fetchColleges = async () => {
@@ -88,16 +88,6 @@ function ClgList() {
                                 className="form-control rounded-pill px-4 py-2 shadow-sm"
                                 placeholder="Search colleges by name, city, or program..."
                             />
-                        </div>
-                        <div className="col-md-4 text-end mt-3 mt-md-0">
-                            <button
-                                className="btn btn-success d-flex align-items-center justify-content-center gap-2 shadow-sm py-2 px-4 rounded-pill w-100 w-md-auto"
-                                onClick={handleAddCollege}
-                                style={{ fontWeight: "600", fontSize: "16px" }}
-                            >
-                                <i className="bi bi-plus-circle-fill"></i>
-                                Add College
-                            </button>
                         </div>
                     </div>
 

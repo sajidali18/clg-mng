@@ -38,42 +38,55 @@ export default function UniversityProfile() {
     return (
         
         <div className="d-flex flex-column min-vh-100">
-            <header
-                style={{ backgroundColor: "#EA6A2B" }}className="" >
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-6">
-                            {/* {college.map((item) => {
-                                console.log(item);
-                            })} */}
-                            <div className="d-flex align-items-center">
-                                {/* Logo Image */}
-                                <img
-                                    src="https://s3-alpha-sig.figma.com/img/25bd/ea01/8d16d9096b072a7cba46f333db0c77cb?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DkpsutrN~pNrJzXZTSLcIQAILGxHnHONKe9mWn5lbAcqzlZW13PzXMkK4KaOQmQ7jjSQ3hDWmKo30p3TYPC7ORmWgn~AJlGrKU46LJOSvU3hrHkq33FosxmLRTFO8-MvXkNGm2vGBXvEopheoPEQjzvuucWEajeH7ZOBxPWjoZTeUvbhD8rWS0kW~p9bzGqbSVVJgsjIAGz47LhSkjTMEQs3xsNekooCs2hFMuKcmzNrog2MRACzTd4jmWeZ174Ll4IBwnFq1jR0ZA4AuXvEBKX4UzmN8OtvQXY38vMP1IqiD-qDjiXqtrtfHsmiWS730itAHjg8YHKxPrMK92iYSQ__" // Replace with your actual logo path
-                                    alt="PushGrade Logo"
-                                    width={120}
-                                    height={40}
-                                    style={{ objectFit: "contain" }}/>
+           <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 container">
+  {/* <div class="container"> */}
+  <div classname="row align-items-center">
+    <div classname="col-6">
+      <div classname="d-flex align-items-center">
+        <img src="https://s3-alpha-sig.figma.com/img/25bd/ea01/8d16d9096b072a7cba46f333db0c77cb?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=sHA3x1JgHFDOMppRvaOY6byIoshM~aRubcHVlv3DDOdHW-elF8zpC4-f3LShzY1OrvF9grTHjmjSh26vRszgH-2ob4fNLRLYsnokdwfXIBNgFf1JecUkhgJjuzkelyodmaEZITYHPWQ7YFgKkSRDGqr0uTTBe2CQq~RHrlDhnE7pEBeK0QUb-hiQItB-MRIXf8Br3qv5oTYaVRAgtaujQLvmpYpG1OJ3z2afHbDUahn03O79gOI8CclwEPefTCDXyUir7gt2RALtk8NPOaanZH1-W3-WQbxL1RBJuFogUSwMCrcyCttZNXMBO-Rwa32hNo-sVNkTs9ZJ4pB2dihOnA__" alt="PushGrade Logo" width={120} height={40} style={{objectFit: 'contain'}} />
+      </div>
+    </div>
+  </div>
+  <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span className="navbar-toggler-icon" />
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav me-auto mx-4">
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          Product
+        </a>
+      </li>
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          Teams
+        </a>
+      </li>
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          Individuals
+        </a>
+      </li>
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          Download
+        </a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+    {/* <div className="d-flex align-items-center">
+      <a href="#" className="me-3 nav-link">Campus Connect</a>
+      <a href="#" className="me-3 nav-link">Log in</a>
+      <a href="#" className="btn btn-dark rounded-3 px-4">Sign Up</a>
+    </div> */}
+  </div>
+                 </nav>
 
-                                {/* Triangle Arrow */}
-                                <div
-                                    className="d-none d-sm-block "
-                                    style={{
-                                        width: 0,
-                                        height: 0,
-                                        borderTop: "15px solid transparent",
-                                        borderBottom: "15px solid transparent",
-                                        borderLeft: "25px solid white",
-                                    }}
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
 
 
-            <main className="flex-grow-1 py-4">
+              <main className="flex-grow-1 py-4">
                 <div className="container">
                     <div className="row g-4">
                         <div className="col-md-8">
